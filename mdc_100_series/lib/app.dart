@@ -19,11 +19,11 @@ import 'login.dart';
 
 // TODO: Convert ShrineApp to stateful widget (104)
 class ShrineApp extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Shrine',
+      debugShowCheckedModeBanner: false,
       // TODO: Change home: to a Backdrop with a HomePage frontLayer (104)
       home: HomePage(),
       // TODO: Make currentCategory field take _currentCategory (104)

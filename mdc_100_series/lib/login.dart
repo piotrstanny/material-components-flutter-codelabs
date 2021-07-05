@@ -22,6 +22,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _unfocusedColor = Colors.grey[600];
+  final _usernameFocusNode = FocusNode();
+  final _passwordFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +50,11 @@ class _LoginPageState extends State<LoginPage> {
               decoration: InputDecoration(
                 labelText: 'Username',
                 labelStyle: TextStyle(
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
+                    color: _usernameFocusNode.hasFocus
+                        ? Theme.of(context).colorScheme.secondary
+                        : _unfocusedColor),
               ),
+              focusNode: _usernameFocusNode,
             ),
             SizedBox(height: 12.0),
             TextField(
@@ -57,10 +62,11 @@ class _LoginPageState extends State<LoginPage> {
               decoration: InputDecoration(
                 labelText: 'Password',
                 labelStyle: TextStyle(
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
+                    color: _passwordFocusNode.hasFocus
+                        ? Theme.of(context).colorScheme.secondary
+                        : _unfocusedColor),
               ),
-              obscureText: true,
+              focusNode: _passwordFocusNode,
             ),
             ButtonBar(
               children: [
@@ -73,20 +79,37 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 ElevatedButton(
                   child: Text('NEXT'),
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(
+                      BeveledRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                      ),
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                 ),
               ],
             )
-            // TODO: Wrap Username with AccentColorOverride (103)
-            // TODO: Remove filled: true values (103)
-            // TODO: Wrap Password with AccentColorOverride (103)
           ],
         ),
       ),
     );
   }
-}
 
-// TODO: Add AccentColorOverride (103)
+  @override
+  void initState() {
+    super.initState();
+    _usernameFocusNode.addListener(() {
+      setState(() {
+        //Redraw so that the username label reflects the focus state
+      });
+    });
+    _passwordFocusNode.addListener(() {
+      setState(() {
+        //Redraw so that the password label reflects the focus state
+      });
+    });
+  }
+}

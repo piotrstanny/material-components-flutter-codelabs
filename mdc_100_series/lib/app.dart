@@ -70,7 +70,15 @@ ThemeData _buildShrineTheme() {
     ),
     // TODO: Add the text themes (103)
     // TODO: Add the icon themes (103)
-    // TODO: Decorate the inputs (103)
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          width: 2.0,
+          color: kShrineBrown900,
+        ),
+      ),
+      border: OutlineInputBorder(),
+    ),
   );
 }
 

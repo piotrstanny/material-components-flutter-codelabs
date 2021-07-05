@@ -45,16 +45,20 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _usernameController,
               decoration: InputDecoration(
-                filled: true,
                 labelText: 'Username',
+                labelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
             ),
             SizedBox(height: 12.0),
             TextField(
               controller: _passwordController,
               decoration: InputDecoration(
-                filled: true,
                 labelText: 'Password',
+                labelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
               obscureText: true,
             ),

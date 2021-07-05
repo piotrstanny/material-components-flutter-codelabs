@@ -67,6 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                         : _unfocusedColor),
               ),
               focusNode: _passwordFocusNode,
+              obscureText: true,
             ),
             ButtonBar(
               children: [
